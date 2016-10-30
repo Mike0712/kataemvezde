@@ -15,7 +15,18 @@ class CreateCheckpointsTable extends Migration
     {
         Schema::create('checkpoints', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->integer('kilomeeter');
+            $table->float('lattitude');
+            $table->float('longditude');
+            $table->integer('sort');
+            $table->integer('competition_id');
             $table->timestamps();
+
+            $table->foreign('competition_id')
+                ->references('id')->on('competitions')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
         });
     }
 

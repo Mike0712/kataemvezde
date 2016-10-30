@@ -20,11 +20,20 @@ class CreatePersonsTable extends Migration
             $table->enum('sex', ['male', 'female']);
             $table->timestamp('year_birth');
             $table->integer('user_id');
+            $table->enum('progress', ['200', '300', '400', '600', '1000+', '5000+']);
+            $table->enum('mission', ['free', 'member', 'org', 'bigord', 'director', 'volunteer']);
+            $table->integer('club_id');
             $table->timestamps();
 
             $table->foreign('user_id')
-                    ->references('id')->on('users')
-                    ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
+
+            $table->foreign('club_id')
+                ->references('id')->on('clubs')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
         });
     }
 
