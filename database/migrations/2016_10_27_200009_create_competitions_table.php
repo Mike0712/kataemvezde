@@ -17,6 +17,7 @@ class CreateCompetitionsTable extends Migration
             $table->increments('id');
             $table->timestamp('date_time');
             $table->integer('track_id');
+            $table->integer('distance_id')->nullable();
             $table->timestamps();
 
             $table->foreign('track_id')

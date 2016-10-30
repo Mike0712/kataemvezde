@@ -17,8 +17,8 @@ class CreateCheckpointsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('kilomeeter');
-            $table->float('lattitude');
-            $table->float('longditude');
+            $table->float('lattitude')->nullable();
+            $table->float('longditude')->nullable();
             $table->integer('sort');
             $table->integer('competition_id');
             $table->timestamps();

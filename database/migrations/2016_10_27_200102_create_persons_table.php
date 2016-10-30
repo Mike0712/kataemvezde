@@ -21,7 +21,7 @@ class CreatePersonsTable extends Migration
             $table->timestamp('year_birth');
             $table->integer('user_id');
             $table->enum('progress', ['200', '300', '400', '600', '1000+', '5000+']);
-            $table->enum('mission', ['free', 'member', 'org', 'bigord', 'director', 'volunteer']);
+            $table->enum('mission', ['free', 'member', 'org', 'bigord', 'director', 'volunteer', 'photographer']);
             $table->integer('club_id');
             $table->timestamps();
 
