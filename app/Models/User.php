@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * A user can have one person
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function person()
+    {
+        return $this->hasOne('App\Models\Person', 'user_id');
+    }
 }
