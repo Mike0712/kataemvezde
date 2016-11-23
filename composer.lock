@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4cabc4bef10ca2de278088442cbfdb85",
-    "content-hash": "844cd5fa28d8fd1a39ee7c50258a3c26",
+    "hash": "32f7e8986ca724071e4b1f93d6a0447b",
+    "content-hash": "cd3fe10fba87e7f2191a942480d8a3d7",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -114,6 +114,57 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "darrylkuhn/dialect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darrylkuhn/dialect.git",
+                "reference": "d749cdc26bf8a52ccfe93a0433f47b78f0748458"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darrylkuhn/dialect/zipball/d749cdc26bf8a52ccfe93a0433f47b78f0748458",
+                "reference": "d749cdc26bf8a52ccfe93a0433f47b78f0748458",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.*|5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "illuminate/database": "4.*|5.*",
+                "phpunit/phpunit": "4.*",
+                "symfony/process": "~2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eloquent\\Dialect\\": "src/Dialect/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darryl Kuhn",
+                    "email": "darryl.kuhn@gmail.com"
+                }
+            ],
+            "description": "Provides JSON datatype support for the Eloquent ORM",
+            "keywords": [
+                "eloquent",
+                "illuminate",
+                "json",
+                "laravel",
+                "schema-free",
+                "schemaless"
+            ],
+            "time": "2016-06-17 00:11:13"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -908,16 +959,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -952,7 +1003,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "psr/log",
@@ -3609,7 +3660,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "darrylkuhn/dialect": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
