@@ -14,4 +14,9 @@ class IndexController extends Controller
     {   
         return view('front.page.index');
     }
+    
+    public function about()
+    {
+        return view('front.page.about');
+    }
 }

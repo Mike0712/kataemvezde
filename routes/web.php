@@ -15,5 +15,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
+//main
 Route::any('/', ['as' => 'main', 'uses' => 'Front\IndexController@index']);
+
+Route::any('/about', ['as' => 'main', 'uses' => 'Front\IndexController@about']);

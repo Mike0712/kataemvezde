@@ -102,7 +102,7 @@
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Выйти
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST"
@@ -137,11 +137,11 @@
                     <div class="container">
                         <div class="collapse navbar-collapse menu_block" id="app-navbar-collapse">
                             <ul class="sf-menu nav navbar-nav">
-                                <li class="current"><a href="/">Главная</a></li>
-                                <li><a href="index-1.html">О клубе</a></li>
-                                <li><a href="index-2.html">Календарь</a></li>
-                                <li><a href="index-3.html">Участники</a></li>
-                                <li><a href="index-4.html">Контакты</a></li>
+                                <li><a href="/">Главная</a></li>
+                                <li><a href="/about">О проекте</a></li>
+                                <li><a href="/calender">Календарь</a></li>
+                                <li><a href="/members">Участники</a></li>
+                                <li><a href="/contact">Контакты</a></li>
                             </ul>
                         </div>
                     </div>
