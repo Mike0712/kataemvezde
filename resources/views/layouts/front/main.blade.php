@@ -140,8 +140,8 @@
                                 <li><a href="/">Главная</a></li>
                                 <li><a href="/about">О проекте</a></li>
                                 <li><a href="/calender">Календарь</a></li>
-                                <li><a href="/members">Участники</a></li>
-                                <li><a href="/contact">Контакты</a></li>
+                                <li><a href="/athlets">Участники</a></li>
+                                <li><a href="/clubs">Клубы и организаторы</a></li>
                             </ul>
                         </div>
                     </div>

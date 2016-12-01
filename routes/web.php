@@ -11,11 +11,14 @@
 |
 */
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-//main
-Route::any('/', ['as' => 'main', 'uses' => 'Front\IndexController@index']);
 
-Route::any('/about', ['as' => 'main', 'uses' => 'Front\IndexController@about']);
+//Фронтконтроллер
+
+Route::group(['namespace' => 'Front'], function(){
+    Route::any('/', ['as' => 'main', 'uses' => 'IndexController@index']);
+    Route::any('/about', ['as' => 'main', 'uses' => 'IndexController@about']);
+});
+
