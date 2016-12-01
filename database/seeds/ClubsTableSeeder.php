@@ -17,5 +17,12 @@ class ClubsTableSeeder extends Seeder
             'alias' =>'nskmarafon',
             'place' => 'Новосибирск',
         ]);
+
+        Club::create([
+            'title' => 'НВК-Райдер',
+            'titleEn' =>'NVK-Raider',
+            'alias' =>'nvkraider',
+            'place' => 'Новосибирск',
+        ]);
     }
 }

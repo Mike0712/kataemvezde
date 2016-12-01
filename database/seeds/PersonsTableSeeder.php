@@ -20,7 +20,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 1,
             'progress' => '1000+',
             'mission' => 'director',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -31,7 +30,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 2,
             'progress' => '1000+',
             'mission' => 'member',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -42,7 +40,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 3,
             'progress' => '1000+',
             'mission' => 'org',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -53,7 +50,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 4,
             'progress' => '1000+',
             'mission' => 'member',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -64,7 +60,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 5,
             'progress' => '1000+',
             'mission' => 'org',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -75,7 +70,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 6,
             'progress' => '1000+',
             'mission' => 'bigord',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -86,7 +80,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 7,
             'progress' => '1000+',
             'mission' => 'member',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -97,7 +90,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 8,
             'progress' => '1000+',
             'mission' => 'member',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -108,7 +100,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 9,
             'progress' => '1000+',
             'mission' => 'org',
-            'club_id' => 1,
         ]);
 
         Person::create([
@@ -119,7 +110,6 @@ class PersonsTableSeeder extends Seeder
             'user_id' => 10,
             'progress' => '1000+',
             'mission' => 'org',
-            'club_id' => 1,
         ]);
     }
 }

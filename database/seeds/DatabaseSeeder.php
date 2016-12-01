@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CheckpointsTableSeeder::class);
         $this->call(PersonsTableSeeder::class);
         $this->call(ResultsTableSeeder::class);
+        $this->call(PersonsClubTableSeeder::class);
     }
 }
