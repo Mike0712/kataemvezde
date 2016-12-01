@@ -8,10 +8,10 @@ use App\Models\Person;
 use App\Models\Club;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class IndexController extends Controller
 {
     public function index(Club $club)
     {   
-        return view('page.index');
+        return view('front.page.index');
     }
 }

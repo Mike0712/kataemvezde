@@ -137,7 +137,7 @@
                     <div class="container">
                         <div class="collapse navbar-collapse menu_block" id="app-navbar-collapse">
                             <ul class="sf-menu nav navbar-nav">
-                                <li class="current"><a href="index.html">Главная</a></li>
+                                <li class="current"><a href="/">Главная</a></li>
                                 <li><a href="index-1.html">О клубе</a></li>
                                 <li><a href="index-2.html">Календарь</a></li>
                                 <li><a href="index-3.html">Участники</a></li>
