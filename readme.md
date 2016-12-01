@@ -1,27 +1,14 @@
-# Laravel PHP Framework
+# Катаем везде. Прикладное веб-приложение для спортсменов-любителей
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+В настоящее время в мире и в том числе в России набирает популярность любительское спортивное движение. В частности такие циклические виды, как бег, включая различные виды марафона, триатлон, спортивное ориентирование, велоспорт, в частности рандоннерское движение под эгидой Audax Club Parisen.
+Хотя последнее по заявлению его организаторов к спорту не отностится, но тот факт что в рандоннерских заездах фиксируется время прохождения дистанции, безусловно такие велозаезды следует считать соревнованиями.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Одной общей проблемой всех любительских стартов можно считать отсутствие адекватной системы фиксации резульататов. Несмотря на большое количество доступного gps-навигационного ПО, такого как например, Strava, Runtastic и пр, фиксацию резульатов соревнований можно считать неудовлетворительной, особоенно когда речь идёт о марафонских дистанциях.
+Например, участники чаще всего сами фиксируют свои результаты, посредством направления sms организатору. Также распространён чековый контроль, т.е. когда участник доказывает свой результат чеком из придорожного магазина, находящегося позвле очередного чекпоинта.
+Безусловно, такая система фиксации резульатов не выдерживает никакой критики.
+Другой распространённой проблемой является процесс обработки результатов и их публикации на сайте/форуме, другом ресурсе организатора. В отдельных случаях с момента проведения соревнования до пуликации результата может пройти несколько недель.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+##Концепция приложения.
 
-## Official Documentation
+Задачей созаваемого приложения является решение вышеперечисленных проблем. Данное приложение должно уметь получать данные от специальных сервисов, таких как Strava и помещать эти данные в базу данных с целью их предоставления по запросам пользователей на сайте.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
