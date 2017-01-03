@@ -19,4 +19,9 @@ class IndexController extends Controller
     {
         return view('front.page.about');
     }
+
+    public function calendar()
+    {
+        return view('front.page.calendar');
+    }
 }

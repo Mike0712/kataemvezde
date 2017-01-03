@@ -139,9 +139,9 @@
                             <ul class="sf-menu nav navbar-nav">
                                 <li><a href="/">Главная</a></li>
                                 <li><a href="/about">О проекте</a></li>
-                                <li><a href="/calender">Календарь</a></li>
+                                <li><a href="/calendar">Календарь</a></li>
                                 <li><a href="/athlets">Участники</a></li>
-                                <li><a href="/clubs">Клубы и организаторы</a></li>
+                                <li><a href="/clubs">Клубы</a></li>
                             </ul>
                         </div>
                     </div>
