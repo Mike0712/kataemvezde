@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
 
 
         /*
@@ -232,6 +233,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Hlml' => Collective\Html\HtmlFacade::class,
+        'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
 
     ],
 

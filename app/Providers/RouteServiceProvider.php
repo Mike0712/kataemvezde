@@ -75,5 +75,7 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             require base_path('routes/api.php');
         });
+        \Modular::loadRoutes($this->app['router'], 'web');
+        \Modular::loadRoutes($this->app['router'], 'api');
     }
 }

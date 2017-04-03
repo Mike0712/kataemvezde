@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PersonsTableSeeder::class);
         $this->call(ResultsTableSeeder::class);
         $this->call(PersonsClubTableSeeder::class);
+        Modular::seed($this);
     }
 }

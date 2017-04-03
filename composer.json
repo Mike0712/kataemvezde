@@ -10,7 +10,9 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "laravelcollective/html": "^5.3",
         "darrylkuhn/dialect": "dev-master",
-        "barryvdh/laravel-ide-helper": "^2.2"
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "mnabialek/laravel-modular": "0.2.*",
+        "torann/geoip": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

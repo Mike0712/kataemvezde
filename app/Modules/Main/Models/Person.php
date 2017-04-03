@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Modules\Main\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Eloquent\Dialect\Json;

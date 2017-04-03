@@ -15,11 +15,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-//Фронтконтроллер
+// Profile
 
-Route::group(['namespace' => 'Front'], function(){
-    Route::any('/', ['as' => 'main', 'uses' => 'IndexController@index']);
-    Route::any('/about', ['as' => 'main', 'uses' => 'IndexController@about']);
-    Route::any('/calendar', ['as' => 'main', 'uses' => 'IndexController@calendar']);
+
+Route::group(['namespace' => 'Admin', 'middleware' => ['admin']], function (){
+    Route::any('/profile', ['as' => 'profile', 'middleware' => 'auth', 'uses' => 'ProfileController@members']);
 });
+
+
 
