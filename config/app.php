@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
 
 
         /*
@@ -234,6 +235,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Hlml' => Collective\Html\HtmlFacade::class,
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
 
     ],
 

@@ -4,6 +4,7 @@ namespace App\Modules\Main\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Main\Models\Club;
+use Torann\GeoIP\Facades\GeoIP;
 
 
 class IndexController extends Controller
