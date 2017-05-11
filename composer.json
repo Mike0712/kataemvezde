@@ -12,7 +12,8 @@
         "darrylkuhn/dialect": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.2",
         "mnabialek/laravel-modular": "0.2.*",
-        "torann/geoip": "^1.0"
+        "torann/geoip": "^1.0",
+        "basvandorst/StravaPHP": "1.0.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

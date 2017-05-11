@@ -163,13 +163,15 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
+
         \Torann\GeoIP\GeoIPServiceProvider::class,
+
 
 
         /*
          * Package Service Providers...
          */
+        Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
 
         //
 
