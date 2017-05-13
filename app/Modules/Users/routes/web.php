@@ -6,11 +6,11 @@ Auth::routes();
 // Profile
 
 
-Route::group(['namespace' => 'Admin', 'middleware' => ['admin']], function (){
+Route::group(['namespace' => 'Admin', 'middleware' => ['web', 'auth']], function (){
     Route::any('/profile', ['as' => 'profile', 'middleware' => 'auth', 'uses' => 'ProfileController@members']);
 });
 
 
 
 
-Auth::routes();
+//Auth::routes();
