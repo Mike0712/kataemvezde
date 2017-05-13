@@ -194,3 +194,8 @@ function bytesToHuman($bytes)
 
     return round($bytes) . '&nbsp;' . $units[ $i ];
 }
+
+function module_path($module_name, $path = '')
+{
+    return app('path') . DIRECTORY_SEPARATOR . 'Modules' . DIRECTORY_SEPARATOR . ucfirst(camel_case($module_name)) . ($path ? DIRECTORY_SEPARATOR.$path : $path);
+}

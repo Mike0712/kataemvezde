@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Recrival\Facades;
+namespace App\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class StravaOAuth extends Facade
+class StravaApi extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'oauth_strava';
+        return 'api_strava';
     }
 }

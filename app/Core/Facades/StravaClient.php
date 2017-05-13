@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Recrival\Facades;
+namespace App\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
