@@ -13,7 +13,8 @@
         "barryvdh/laravel-ide-helper": "^2.2",
         "mnabialek/laravel-modular": "0.2.*",
         "torann/geoip": "^1.0",
-        "basvandorst/StravaPHP": "1.0.2"
+        "iamstuartwilson/strava": "^1.3",
+        "basvandorst/StravaPHP": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

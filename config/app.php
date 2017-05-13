@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Moscow',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,6 +172,8 @@ return [
          * Package Service Providers...
          */
         Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         //
 
@@ -180,12 +182,15 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
+        /*
+         * Strava Service Providers...
+         */
+
+        App\Providers\StravaServiceProvider::class,
     ],
 
     /*
@@ -238,7 +243,9 @@ return [
         'Hlml' => Collective\Html\HtmlFacade::class,
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
-
+        'StravaApi' => App\Recrival\Facades\StravaApi::class,
+        'StravaOAuth' => App\Recrival\Facades\StravaOAuth::class,
+        'StravaClient' => App\Recrival\Facades\StravaClient::class,
     ],
 
 ];

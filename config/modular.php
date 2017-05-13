@@ -156,6 +156,7 @@ return [
      */
     'modules' => [
         'Main' => ['active' => true, 'routes' => true,],
+        'StravaModule' => ['active' => true, 'routes' => true,],
         // end of modules (don't remove this comment)
     ],
 
