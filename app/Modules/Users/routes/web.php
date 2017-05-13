@@ -1,6 +1,6 @@
 <?php
 
-/*Auth::routes();
+Auth::routes();
 
 
 // Profile
@@ -13,4 +13,4 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['admin']], function (){
 
 
 
-Auth::routes();*/
+Auth::routes();
