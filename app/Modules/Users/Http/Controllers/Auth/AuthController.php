@@ -36,7 +36,7 @@ class AuthController extends Controller
 
     public function register()
     {
-
+        return view('users::auth.register');
     }
 
     public function logout()
@@ -47,6 +47,16 @@ class AuthController extends Controller
             Auth::guard('web')->logout($user);
             return redirect()->intended();
         }
+    }
+
+    public function showLinkRequestForm()
+    {
+        return view('users::auth.passwords.email');
+    }
+
+    public function showResetForm($token)
+    {
+        return view('users::auth.passwords.reset', ['token' => $token]);
     }
 
 }
