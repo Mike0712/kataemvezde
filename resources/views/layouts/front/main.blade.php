@@ -10,14 +10,14 @@
 
     <title>{{ config('app.name', 'Марафон') }}</title>
     <!-- Bootstrap css-->
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ uncache('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <link href="/css/countdown.css" rel="stylesheet">
-    <link href="/css/style_common.css" rel="stylesheet">
-    <link href="/css/style4.css" rel="stylesheet">
-    <link href="/css/camera.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="{{ uncache('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ uncache('/css/countdown.css') }}" rel="stylesheet">
+    <link href="{{ uncache('/css/style_common.css') }}" rel="stylesheet">
+    <link href="{{ uncache('/css/style4.css') }}" rel="stylesheet">
+    <link href="{{ uncache('/css/camera.css') }}" rel="stylesheet">
+    <link href="{{ uncache('/css/style.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
 
@@ -27,11 +27,11 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script type="text/javascript"
+    {{--<script type="text/javascript"
             src="http://gc.kis.scr.kaspersky-labs.com/1692135F-25C7-0A4C-B01F-A8D0A4A73531/main.js"
-            charset="UTF-8"></script>
-    <script src="/js/jquery.js"></script>
-    <script src="/js/jquery-migrate-1.2.1.js"></script>
+            charset="UTF-8"></script>--}}
+    <script src="{{ uncache('/js/jquery.js') }}"></script>
+    {{--<script src="/js/jquery-migrate-1.2.1.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/superfish.js"></script>
     <script src="/js/jquery.ui.totop.js"></script>
@@ -39,9 +39,9 @@
     <script src="/js/jquery.mobilemenu.js"></script>
     <script src="/js/camera.js"></script>
     <!--[if (gt IE 9)|!(IE)]><!-->
-    <script src="/js/jquery.mobile.customized.min.js"></script>
+    <script src="/js/jquery.mobile.customized.min.js"></script>--}}
     <!--<![endif]-->
-    <script>
+    {{--<script>
         $(document).ready(function () {
             jQuery('#camera_wrap').camera({
                 loader: false,
@@ -55,7 +55,7 @@
             });
             $().UItoTop({easingType: 'easeOutQuart'});
         });
-    </script>
+    </script>--}}
 </head>
 <body>
 <div class="app main">
@@ -90,6 +90,17 @@
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Вход</a></li>
                         <li><a href="{{ url('/register') }}">Регистрация</a></li>
+                        <li><div class="strava_oauth_cont">
+                                {{--{{ Form::open(['class' => 'strava_oauth_form', 'method' => 'get']) }}
+                                {{ Form::hidden('client_id', env('STRAVA_CLIENT_ID', null)) }}
+                                {{ Form::hidden('response_type', 'code') }}
+                                {{ Form::hidden('redirect_uri', env('APP_URL') . 'strava_auth') }}
+                                {{ Form::hidden('scope', null) }}
+                                {{ Form::hidden('state', 'mystate') }}
+                                {{ Form::hidden('approval_prompt', 'force') }}
+                                {{ Form::close() }}--}}
+                                <a href="{{ \App\Modules\Strava\Models\Strava::getOAthUrl(route('strava.oauth')) }}" class="small" title="Регистрация с помощью Strava"></a>
+                            </div></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -153,7 +164,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/jquery.countdown.js"></script>
+{{--<script src="/js/jquery.countdown.js"></script>
 <script src="/js/cd_config.js"></script>
 <script src="/js/modernizr.custom.69142.js"></script>
 <script type="text/javascript">
@@ -167,7 +178,8 @@
             }
         }
     });
-</script>
-<script src="/js/app.js"></script>
+</script>--}}
+<script src="{{ uncache('/js/bootstrap.min.js') }}"></script>
+<script src="{{ uncache('/js/app.js') }}"></script>
 </body>
 </html>

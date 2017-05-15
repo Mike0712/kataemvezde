@@ -1,5 +1,4 @@
-@import "reset.css";
-@import "grid.css";
+
 @import "font-awesome.css";
 @import "superfish.css";
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400);
@@ -882,4 +881,21 @@ header h1 a {
     margin-left: -140px;
 }
 
+}
+
+.strava_oauth_cont .small {
+    background: url(/images/strava/logo.png) no-repeat;
+    height: 40px;
+    width: 43px;
+    margin-top: 6px;
+    display: block;
+    background-position: center;
+    background-color: #FC4C02;
+    border-radius: 8px;
+}
+.strava_oauth_cont .small:hover{
+    background-color: #ed4b02;
+}
+.strava_oauth_cont a {
+    outline: none;
 }
