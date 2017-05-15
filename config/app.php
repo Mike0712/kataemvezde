@@ -244,8 +244,6 @@ return [
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
         'StravaApi' => App\Core\Facades\StravaApi::class,
-        'StravaOAuth' => App\Core\Facades\StravaOAuth::class,
-        'StravaClient' => App\Core\Facades\StravaClient::class,
     ],
 
 ];
