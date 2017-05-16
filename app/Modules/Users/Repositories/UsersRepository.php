@@ -11,7 +11,7 @@ class UsersRepository extends AbstractRepository
     /**
      * {@inheritdoc}
      */
-    public function __construct(Container $app, Users $model)
+    public function __construct(Container $app, User $model)
     {
         parent::__construct($app, $model);
     }

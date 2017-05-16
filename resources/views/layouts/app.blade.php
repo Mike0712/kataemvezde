@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ uncache('css/app.css') }}" rel="stylesheet">
+    {{--<link href="{{ uncache('css/app.css') }}" rel="stylesheet">--}}
+    <link href="{{ uncache('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ uncache('css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -19,6 +21,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -50,8 +53,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Логин</a></li>
+                            <li><a onclick="modal.open('{{ route('login') }}')">Вход</a></li>
                             <li><a href="{{ route('register') }}">Регистрация</a></li>
+                            <li><div class="strava_oauth_cont">
+                                    <a href="{{ \App\Modules\Strava\Models\StravaApiClient::getOAthUrl(route('strava.oauth')) }}" class="small" title="Регистрация с помощью Strava"></a>
+                                </div>
+                            </li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -82,6 +89,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset(uncache('js/app.js')) }}"></script>
+    <script src="{{ asset(uncache('js/modal.js')) }}"></script>
+
 </body>
 </html>

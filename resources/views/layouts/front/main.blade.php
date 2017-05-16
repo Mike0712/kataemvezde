@@ -31,6 +31,8 @@
             src="http://gc.kis.scr.kaspersky-labs.com/1692135F-25C7-0A4C-B01F-A8D0A4A73531/main.js"
             charset="UTF-8"></script>--}}
     <script src="{{ uncache('/js/jquery.js') }}"></script>
+    <script src="{{ uncache('/js/modal.js') }}"></script>
+
     {{--<script src="/js/jquery-migrate-1.2.1.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/superfish.js"></script>
@@ -39,9 +41,9 @@
     <script src="/js/jquery.mobilemenu.js"></script>
     <script src="/js/camera.js"></script>
     <!--[if (gt IE 9)|!(IE)]><!-->
-    <script src="/js/jquery.mobile.customized.min.js"></script>--}}
+    <script src="/js/jquery.mobile.customized.min.js"></script>--}}{{--
     <!--<![endif]-->
-    {{--<script>
+    --}}{{--<script>
         $(document).ready(function () {
             jQuery('#camera_wrap').camera({
                 loader: false,
@@ -72,6 +74,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
+
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{--{{ config('app.name', 'Laravel') }}--}}
@@ -88,10 +91,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Вход</a></li>
+                        <li><a onclick="modal.open('{{ route('login') }}')">Вход</a></li>
                         <li><a href="{{ url('/register') }}">Регистрация</a></li>
                         <li><div class="strava_oauth_cont">
-                                <a href="{{ \App\Modules\Strava\Models\Strava::getOAthUrl(route('strava.oauth')) }}" class="small" title="Регистрация с помощью Strava"></a>
+                                <a href="{{ \App\Modules\Strava\Models\StravaApiClient::getOAthUrl(route('strava.oauth')) }}" class="small" title="Регистрация с помощью Strava"></a>
                             </div></li>
                     @else
                         <li class="dropdown">
@@ -156,8 +159,8 @@
 </div>
 
 <!-- Scripts -->
-{{--<script src="/js/jquery.countdown.js"></script>
-<script src="/js/cd_config.js"></script>
+<script src="{{ uncache('/js/jquery.countdown.js') }}"></script>
+{{--<script src="/js/cd_config.js"></script>
 <script src="/js/modernizr.custom.69142.js"></script>
 <script type="text/javascript">
     Modernizr.load({
@@ -171,7 +174,7 @@
         }
     });
 </script>--}}
-<script src="{{ uncache('/js/bootstrap.min.js') }}"></script>
-<script src="{{ uncache('/js/app.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 </body>
 </html>
