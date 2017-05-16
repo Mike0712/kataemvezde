@@ -12,8 +12,8 @@
 
     <!-- Styles -->
     {{--<link href="{{ uncache('css/app.css') }}" rel="stylesheet">--}}
-    <link href="{{ uncache('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ uncache('css/style.css') }}" rel="stylesheet">
+    {{--<link href="{{ uncache('css/bootstrap.min.css') }}" rel="stylesheet">--}}
+    <link href="{{ uncache('css_js/styles.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>

@@ -6,7 +6,19 @@
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
+    "browser-sync": "^2.18.11",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemap": "^1.0.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11",
+    "imagemin-pngquant": "^5.0.0",
     "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-9",
     "laravel-elixir-vue-2": "^0.2.0",
@@ -14,5 +26,26 @@
     "lodash": "^4.16.2",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3"
-  }
+  },
+  "name": "kataemvezde",
+  "description": "В настоящее время в мире и в том числе в России набирает популярность любительское спортивное движение. В частности такие циклические виды, как бег, включая различные виды марафона, триатлон, спортивное ориентирование, велоспорт, в частности рандоннерское движение под эгидой Audax Club Parisen.\r Хотя последнее по заявлению его организаторов к спорту не отностится, но тот факт что в рандоннерских заездах фиксируется время прохождения дистанции, безусловно такие велозаезды следует считать соревнованиями.",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mike0712/kataemvezde.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mike0712/kataemvezde/issues"
+  },
+  "homepage": "https://github.com/Mike0712/kataemvezde#readme"
 }
