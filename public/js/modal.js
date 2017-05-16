@@ -1,6 +1,6 @@
 var modal={
     'open': function (el) {
-        console.log(el);
+        $("#myModal").remove();
         $.get(el, {}, function (data) {
             $('body').append(data);
             $(document).ready(function(){

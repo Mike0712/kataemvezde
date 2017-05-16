@@ -899,3 +899,7 @@ header h1 a {
 .strava_oauth_cont a {
     outline: none;
 }
+
+.btn_modal {
+    cursor: pointer;
+}

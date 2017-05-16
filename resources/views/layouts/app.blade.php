@@ -53,8 +53,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a onclick="modal.open('{{ route('login') }}')">Вход</a></li>
-                            <li><a href="{{ route('register') }}">Регистрация</a></li>
+                            <li><a class="btn_modal" onclick="modal.open('{{ route('login') }}')">Вход</a></li>
+                            <li><a class="btn_modal" onclick="modal.open('{{ route('register') }}')">Регистрация</a></li>
                             <li><div class="strava_oauth_cont">
                                     <a href="{{ \App\Modules\Strava\Models\StravaApiClient::getOAthUrl(route('strava.oauth')) }}" class="small" title="Регистрация с помощью Strava"></a>
                                 </div>

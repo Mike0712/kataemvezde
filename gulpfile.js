@@ -13,7 +13,7 @@ var gulp = require('gulp');
 
 gulp.task('styles', function () {
    gulp.src('./resources/assets/css/**/*.css')
+       .pipe(cssmin())
        .pipe(concat('styles.css'))
-       // .pipe(cssmin())
        .pipe(gulp.dest('./public/css_js'))
 });
