@@ -6,6 +6,9 @@ use App\Modules\Users\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
+
 
 class RegisterController extends Controller
 {
@@ -67,5 +70,22 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    public function register(Request $request)
+    {
+        if (csrf_token() == $request->only('_token')['_token']){
+            $data = $request->only('name', 'email', 'password', 'password_confirmation');
+            $validation = $this->validator($data);
+            if($validation->fails()){
+                return ['errors' => $validation->errors()->getMessages()];
+            }
+            if ($this->create($data)){
+                if(Auth::attempt(['email'    => $data['email'],
+                                  'password' => $data['password']
+                ], true))
+                return redirect()->intended('/profile');
+            }
+        }
+        return false;
     }
 }

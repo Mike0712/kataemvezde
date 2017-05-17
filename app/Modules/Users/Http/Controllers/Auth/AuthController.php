@@ -5,7 +5,8 @@ namespace App\Modules\Users\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 
 class AuthController extends Controller
 {
@@ -27,16 +28,24 @@ class AuthController extends Controller
                          'password' => $arr['password']
         ], $remember))
         {
-            return redirect()->intended('/profile');
+            return json_encode(['auth' => 'success']);
+//                redirect()->intended('/profile');
         }
-        return redirect()->back()
+        return json_encode(['email' => 'Данные неверны', 'error' => 'login']);
+/*            redirect()->back()
             ->withInput($request->only('email', 'remember'))
-            ->withErrors(['email' => 'Данные неверны']);
+            ->withErrors(['email' => 'Данные неверны']);*/
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        return view('users::auth.register');
+        $errors = new ViewErrorBag();
+        if(isset($request->only('errors')['errors'])){
+            $data = $request->only('errors')['errors'];
+            $errors->put('default', new MessageBag($data));
+            return view('users::auth.register', ['errors' => $errors])->renderSections('content');
+        }
+        return view('users::auth.register', ['errors' => $errors]);
     }
 
     public function logout()

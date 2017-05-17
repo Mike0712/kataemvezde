@@ -18,8 +18,8 @@
 
                 @if ($errors->has('email'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -32,8 +32,8 @@
 
                 @if ($errors->has('password'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -54,7 +54,7 @@
                     Войти
                 </button>
 
-                <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                <a class="btn btn-link btn_modal" onclick="modal.open('{{ route('password.request') }}')">
                     Забыли пароль?
                 </a>
             </div>

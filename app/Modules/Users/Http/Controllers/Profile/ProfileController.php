@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Users\Http\Controllers\Admin;
+namespace App\Modules\Users\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 
@@ -22,7 +22,6 @@ class ProfileController extends Controller
         if(Auth::viaRemember()){
 
         }
-
-        dump(Auth::user()->id);
+        return view('users::profile.profile');
     }
 }
