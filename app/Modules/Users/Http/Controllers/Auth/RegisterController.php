@@ -83,7 +83,7 @@ class RegisterController extends Controller
                 if(Auth::attempt(['email'    => $data['email'],
                                   'password' => $data['password']
                 ], true))
-                return redirect()->intended('/profile');
+                return ['auth' => true];
             }
         }
         return false;

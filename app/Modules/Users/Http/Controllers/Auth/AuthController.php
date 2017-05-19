@@ -40,12 +40,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $errors = new ViewErrorBag();
+        $old_input = ['name' => null, 'email' => null];
         if(isset($request->only('errors')['errors'])){
             $data = $request->only('errors')['errors'];
             $errors->put('default', new MessageBag($data));
-            return view('users::auth.register', ['errors' => $errors])->renderSections('content');
+            parse_str($request->only('old')['old'], $old_input);
         }
-        return view('users::auth.register', ['errors' => $errors]);
+        return view('users::auth.register', ['errors' => $errors, 'old_input' => $old_input]);
     }
 
     public function logout()

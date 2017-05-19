@@ -1,7 +1,8 @@
 var modal = {
-    'open': function (el) {
+    'open': function (el, err, old) {
+        $('.modal-backdrop').remove();
         $("#myModal").remove();
-        $.get(el, {}, function (data) {
+        $.get(el, {errors: err, old: old}, function (data) {
             $('body').append(data);
             $(document).ready(function () {
                 $("#myModal").modal('show');
@@ -15,10 +16,8 @@ var modal = {
                             document.location.href = '/profile';
                         }
                         if (data['errors']) {
-                            $.get(el, {errors: data['errors']}, function (data) {
-                               //  console.log(data.content);
-                                $('#myModal .modal-body').html(data);
-                            })
+                            var  errors = data['errors'];
+                            modal.open(el, errors, items); // рекурсия
                         }
                 }, 'json');
                 return false;
@@ -28,12 +27,10 @@ var modal = {
 )
 },
 
-'close'
-:
-function (el) {
-    $(el).fadeOut();
-}
-,
+'close': function () {
+    $('.modal-backdrop').remove();
+    $("#myModal").remove();
+},
 
 'zbox'
 :
