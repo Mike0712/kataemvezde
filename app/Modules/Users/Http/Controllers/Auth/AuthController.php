@@ -15,9 +15,16 @@ class AuthController extends Controller
 
     }
 
-    public function showLogin()
+    public function showLogin(Request $request)
     {
-        return view('users::auth.login');
+        $errors = new ViewErrorBag();
+        $old_input = ['email' => null];
+        if(isset($request->only('errors')['errors'])){
+            $data = $request->only('errors')['errors'];
+            $errors->put('default', new MessageBag($data));
+            parse_str($request->only('old')['old'], $old_input);
+        }
+        return view('users::auth.login', ['errors' => $errors, 'old_input' => $old_input]);
     }
 
     public function authenticate(Request $request)
@@ -29,12 +36,8 @@ class AuthController extends Controller
         ], $remember))
         {
             return json_encode(['auth' => 'success']);
-//                redirect()->intended('/profile');
         }
-        return json_encode(['email' => 'Данные неверны', 'error' => 'login']);
-/*            redirect()->back()
-            ->withInput($request->only('email', 'remember'))
-            ->withErrors(['email' => 'Данные неверны']);*/
+        return ['errors' => ['email' => 'Данные неверны']];
     }
 
     public function register(Request $request)
