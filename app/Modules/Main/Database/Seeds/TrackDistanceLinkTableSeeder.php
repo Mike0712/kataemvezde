@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
+use DB;
 
 class TrackDistanceLinkTableSeeder extends Seeder
 {

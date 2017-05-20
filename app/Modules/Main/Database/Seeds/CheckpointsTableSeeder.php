@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use App\Models\Checkpoint;
+use App\Modules\Main\Models\Checkpoint;
 
 class CheckpointsTableSeeder extends Seeder
 {

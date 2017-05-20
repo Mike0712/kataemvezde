@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use \App\Models\Distance;
+use \App\Modules\Main\Models\Distance;
 
 class DistancesTableSeeder extends Seeder
 {

@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use App\Models\Result;
+use App\Modules\Main\Models\Result;
 
 class ResultsTableSeeder extends Seeder
 {

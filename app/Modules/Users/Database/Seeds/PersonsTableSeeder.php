@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Users\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use App\Models\Person;
+use App\Modules\Users\Models\Person;
 
 class PersonsTableSeeder extends Seeder
 {

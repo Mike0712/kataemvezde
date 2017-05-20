@@ -20,11 +20,6 @@ class CreateResultsTable extends Migration
             $table->integer('checkpoint_id');
             $table->timestamps();
 
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('restrict')
-                ->onUpdate('cascade');
-
             $table->foreign('checkpoint_id')
                 ->references('id')->on('checkpoints')
                 ->onDelete('restrict')

@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use App\Models\Club;
+use App\Modules\Main\Models\Club;
 class ClubsTableSeeder extends Seeder
 {
     /**

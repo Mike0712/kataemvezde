@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use App\Models\Track;
+use App\Modules\Main\Models\Track;
 
 class TracksTableSeeder extends Seeder
 {

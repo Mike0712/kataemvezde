@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Modules\Main\Database\Seeds;
+
 use Illuminate\Database\Seeder;
-use App\Models\Competition;
+use App\Modules\Main\Models\Competition;
 
 class CompetitionsTableSeeder extends Seeder
 {
