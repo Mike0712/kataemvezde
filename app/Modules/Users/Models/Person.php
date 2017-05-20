@@ -2,7 +2,7 @@
 
 namespace App\Modules\Users\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\AppModel as Model;
 use Eloquent\Dialect\Json;
 
 class Person extends Model

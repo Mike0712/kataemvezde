@@ -2,7 +2,7 @@
 
 namespace App\Modules\Main\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\AppModel as Model;
 
 class Link extends Model
 {

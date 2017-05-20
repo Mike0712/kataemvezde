@@ -33,11 +33,16 @@ class User extends Authenticatable
      */
     public function person()
     {
-        return $this->hasOne('App\Models\Person', 'user_id');
+        return $this->hasOne('App\Modules\Users\Models\Person', 'user_id');
     }
 
     public function result()
     {
-        return $this->hasMany('App\Models\Result', 'user_id');
+        return $this->hasMany('App\Modules\Main\Models\Result', 'user_id');
+    }
+
+    public function strava()
+    {
+        return $this->hasOne('App\Modules\Strava\Models\Strava', 'user_id');
     }
 }
