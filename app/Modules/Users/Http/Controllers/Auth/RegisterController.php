@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Auth;
-
+use Session;
+use App\Modules\Strava\Models\Strava;
 
 class RegisterController extends Controller
 {
@@ -50,11 +51,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ];
+        if(Session::has('strava.access_token') &&
+            Strava::where('access_token', '=', Session::get('strava.access_token'))->first()){
+            $rules['email'] = 'required|max:255|unique:users';
+        }
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -75,6 +81,10 @@ class RegisterController extends Controller
     {
         if (csrf_token() == $request->only('_token')['_token']){
             $data = $request->only('name', 'email', 'password', 'password_confirmation');
+            if($data['password'] == 'strava'){
+                $data['password'] = env('STRAVA_REG_PASSWORD');
+                $data['password_confirmation'] = env('STRAVA_REG_PASSWORD');
+            }
             $validation = $this->validator($data);
             if($validation->fails()){
                 return ['errors' => $validation->errors()->getMessages()];
@@ -82,8 +92,18 @@ class RegisterController extends Controller
             if ($this->create($data)){
                 if(Auth::attempt(['email'    => $data['email'],
                                   'password' => $data['password']
-                ], true))
-                return ['auth' => true];
+                ], true)){
+                    if($request->ajax()){
+                        return ['auth' => true];
+                    }else{
+                        $strava_item = Strava::where('access_token', '=', Session::get('strava.access_token'))->first();
+                        $user_id = Auth::user()->id;
+                        $strava_item->user_id = $user_id;
+                        $strava_item->register = true;
+                        $strava_item->save();
+                        return redirect(url('/profile'));
+                    }
+                }
             }
         }
         return false;

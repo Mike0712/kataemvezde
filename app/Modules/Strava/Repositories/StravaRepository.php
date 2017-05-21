@@ -4,14 +4,14 @@ namespace App\Modules\Strava\Repositories;
 
 use App\Core\AbstractRepository;
 use Illuminate\Contracts\Container\Container;
-use App\Modules\Strava\Models\StravaApiClient;
+use App\Modules\Strava\Models\Strava;
 
 class StravaRepository extends AbstractRepository
 {
     /**
      * {@inheritdoc}
      */
-    public function __construct(Container $app, StravaApiClient $model)
+    public function __construct(Container $app, Strava $model)
     {
         parent::__construct($app, $model);
     }

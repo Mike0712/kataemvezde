@@ -16,7 +16,6 @@ class CreateSravaitemsTable extends Migration
             $table->increments('id');
             $table->integer('strava_id')->unique();
             $table->string('access_token')->unique();
-            $table->string('token_type');
             $table->boolean('register')->default(false);
             $table->integer('user_id')->nullable();
             $table->timestamps();

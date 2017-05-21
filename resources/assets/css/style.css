@@ -903,3 +903,11 @@ header h1 a {
 .btn_modal {
     cursor: pointer;
 }
+
+.rules {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 300px;
+    overflow-y: scroll;
+}

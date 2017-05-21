@@ -10,9 +10,12 @@ use Illuminate\Http\Response;
 use App\Modules\Strava\Http\Requests\StravaRequest;
 use App\Modules\Strava\Repositories\StravaRepository;
 use App\Modules\Strava\Services\StravaService;
+use ErrorException;
 use League\Flysystem\Exception;
 use Request;
 use Session;
+use App\Modules\Strava\Models\Strava;
+use Auth;
 
 class StravaServiceController extends Controller
 {
@@ -38,29 +41,54 @@ class StravaServiceController extends Controller
         $this->service = $service;
     }
 
+    /*
+     * Метод для обработки редиректа от Strava Oauth, меняем временный ключ на постоянный и кладём в сессию
+     */
+
     public function oAuth(Request $request)
     {
         $code = $request::only('code')['code'];
 
         try{
             $getToken = StravaApi::tokenExchange($code);
-            $token = $getToken->access_token;
-        }catch (Exception $e){
-            echo $e;
+            Session::put('strava.access_token', $getToken->access_token);
+            Session::put('strava.athlete.id', $getToken->athlete->id);
+        }catch (ErrorException $e){
+            return $e;
         }
-        Session::put('strava.access_token', $token);
-        Session::put('strava.token_type', $getToken->token_type);
-        Session::put('strava.athlete.id', $getToken->athlete->id);
 
-        return redirect(route('strava.reg'));
+        return redirect(route('strava.user_fix'));
     }
-
-    public function register()
+    /*
+     * Фиксация пользователя Strava в БД, но пока без регистрации в системе
+     */
+    public function stravaUserFix()
     {
         if(Session::has('strava.access_token')){
             $token = Session::get('strava.access_token');
             $id = Session::get('strava.athlete.id');
-            dump(StravaApiClient::getAthletes($token, $id)); die;
+            $api = StravaApiClient::getAthletes($token, $id);
+
+            $item = Strava::where('strava_id', '=', $id)->first();
+            if(!$item)
+            {
+                $item = new Strava();
+                $item->access_token = $token;
+                $item->strava_id = $id;
+                $item->save();
+
+                return view('strava::agreement', ['name' => $api->firstname . ' ' . $api->lastname, 'email' => 'strava' . $api->id]);
+            }
+            if(!$item->register)
+            {
+                return view('strava::agreement', ['name' => $api->firstname . ' ' . $api->lastname, 'email' => 'strava' . $api->id]);
+            }
+            $email = $item->user->email;
+            if(Auth::attempt(['email'    => $email,
+                              'password' => env('STRAVA_REG_PASSWORD')
+            ], true)){
+                return redirect(route('profile'));
+            }
         }
     }
 

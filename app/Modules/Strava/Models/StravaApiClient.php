@@ -5,7 +5,7 @@ namespace App\Modules\Strava\Models;
 use App\Core\Facades\StravaApi;
 use Illuminate\Database\Eloquent\Model;
 
-class StravaApiClient extends Model
+class StravaApiClient
 {
     public static function getOAthUrl($redirect)
     {
