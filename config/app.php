@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
 
 
@@ -244,6 +244,7 @@ return [
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
         'StravaApi' => App\Core\Facades\StravaApi::class,
+        'GoogleMaps' => \GoogleMaps\Facade\GoogleMapsFacade::class,
     ],
 
 ];
