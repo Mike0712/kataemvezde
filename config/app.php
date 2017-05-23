@@ -163,10 +163,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
-        \Torann\GeoIP\GeoIPServiceProvider::class,
-
-
+        Torann\GeoIP\GeoIPServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -191,6 +189,8 @@ return [
          */
         App\Providers\ViewmodServiceProvider::class,
         App\Providers\StravaServiceProvider::class,
+
+        App\Providers\PolylineServiceProvider::class,
     ],
 
     /*
@@ -242,9 +242,10 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Hlml' => Collective\Html\HtmlFacade::class,
         'Modular' => Mnabialek\LaravelModular\Facades\Modular::class,
-        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
         'StravaApi' => App\Core\Facades\StravaApi::class,
-        'GoogleMaps' => \GoogleMaps\Facade\GoogleMapsFacade::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'Polyline' => App\Core\Facades\Polyline::class,
     ],
 
 ];

@@ -7,8 +7,8 @@
         $token = $user->strava->access_token;
         $api = \App\Modules\Strava\Models\StravaApiClient::class;
         $api::setToken($token);
-        $polyline = $api::getSegment(1949877)->map;
-        pr($polyline);
+        pr($api::getAthleteRoutes(9536588));
+
 
     @endphp
 </div>
