@@ -1,4 +1,4 @@
-@extends('layouts.front._modal')
+@extends('layouts.' . $extTpl)
 
 @section('title')
     Форма входа

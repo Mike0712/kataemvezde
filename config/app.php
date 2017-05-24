@@ -172,6 +172,8 @@ return [
         Mnabialek\LaravelModular\Providers\ModularServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+
 
         //
 
@@ -183,14 +185,16 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\CoreServiceProvider::class,
 
         /*
          * Strava Service Providers...
          */
         App\Providers\ViewmodServiceProvider::class,
         App\Providers\StravaServiceProvider::class,
-
         App\Providers\PolylineServiceProvider::class,
+
+
     ],
 
     /*
@@ -246,6 +250,8 @@ return [
         'StravaApi' => App\Core\Facades\StravaApi::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
         'Polyline' => App\Core\Facades\Polyline::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Resizer' => \App\Core\Facades\Resizer::class,
     ],
 
 ];

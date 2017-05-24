@@ -24,7 +24,11 @@ class AuthController extends Controller
             $errors->put('default', new MessageBag($data));
             parse_str($request->only('old')['old'], $old_input);
         }
-        return view('users::auth.login', ['errors' => $errors, 'old_input' => $old_input]);
+        $extTpl = 'app';
+        if($request->ajax()){
+            $extTpl = 'front._modal';
+        }
+        return view('users::auth.login', ['errors' => $errors, 'old_input' => $old_input, 'extTpl' => $extTpl]);
     }
 
     public function authenticate(Request $request)
@@ -35,7 +39,10 @@ class AuthController extends Controller
                          'password' => $arr['password']
         ], $remember))
         {
-            return json_encode(['auth' => 'success']);
+            if($request->ajax()){
+                return json_encode(['auth' => 'success']);
+            }
+            return redirect(route('profile'));
         }
         return ['errors' => ['email' => 'Данные неверны']];
     }
