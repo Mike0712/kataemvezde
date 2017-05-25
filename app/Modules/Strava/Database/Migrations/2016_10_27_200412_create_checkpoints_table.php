@@ -20,11 +20,11 @@ class CreateCheckpointsTable extends Migration
             $table->float('lattitude')->nullable();
             $table->float('longditude')->nullable();
             $table->integer('sort');
-            $table->integer('competition_id');
+            $table->integer('track_id');
             $table->timestamps();
 
-            $table->foreign('competition_id')
-                ->references('id')->on('competitions')
+            $table->foreign('track_id')
+                ->references('id')->on('tracks')
                 ->onDelete('restrict')
                 ->onUpdate('cascade');
         });
