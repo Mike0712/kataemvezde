@@ -19,7 +19,7 @@ Route::group(['namespace' => 'Auth', 'middleware' => 'web',], function (){
 
 Route::group(['namespace' => 'Profile', 'middleware' => ['web']], function (){
     Route::any('/profile', ['as' => 'profile', 'uses' => 'ProfileController@profile']);
-    Route::any('/profile/{id}', ['as' => 'profile', 'uses' => 'ProfileController@getProfile']);
+    Route::any('/profile/{id}', ['as' => 'profile.id', 'uses' => 'ProfileController@getProfile']);
 });
 
 

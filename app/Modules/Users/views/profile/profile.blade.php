@@ -55,6 +55,7 @@
                         <p class="color1"><a target="_blank" href="https://www.strava.com/athletes/{{ $user->strava->strava_id }}">Перейти</a></p>
                     @else
                         <p>Отсутствует</p>
+                        <a href="{{route('strava.add')}}" class="btn btn-danger">Привязать аккаунт</a>
                     @endif
                 </div>
             </div>

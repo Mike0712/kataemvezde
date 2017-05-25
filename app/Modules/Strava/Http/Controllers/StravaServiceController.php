@@ -76,9 +76,17 @@ class StravaServiceController extends Controller
                 $item = new Strava();
                 $item->access_token = $token;
                 $item->strava_id = $id;
+                if(Auth::check()){
+                    $item->register = true;
+                    $item->user_id = Auth::user()->id;
+                    $item->save();
+                    return redirect(route('profile'));
+                }
                 $item->save();
 
                 return view('strava::agreement', ['name' => $api->firstname . ' ' . $api->lastname, 'email' => 'strava' . $api->id]);
+            }else{
+                return 'Данный аккаунт Strava уже используется другим пользователем';
             }
             if(!$item->register)
             {
@@ -91,6 +99,17 @@ class StravaServiceController extends Controller
                 return redirect(route('profile'));
             }
         }
+    }
+
+    public function add(Request $request)
+    {
+        if(!Auth::check()){
+            return redirect('/login/form');
+        }
+        if(Auth::user()->strava){
+            return 'Аккаунт Strava уже привязан к учетной записи данного пользователя';
+        }
+        return redirect(url(StravaApiClient::getOAthUrl(route('strava.oauth'))));
     }
 
     /**
