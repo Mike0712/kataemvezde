@@ -54,9 +54,54 @@ class TrackingController extends Controller
         echo $id;die;
     }
 
-    public function trackAdd(Request $request)
+    public function trackList()
     {
+        if(!Auth::check()){
+            return redirect('/login/form');
+        }
+        if(!$strava = Auth::user()->strava){
+            return 'Требуется автоизация в Strava';
+        }
+        $strava_token = $strava->access_token;
+        StravaApiClient::setToken($strava_token);
+        $api = StravaApiClient::getAthleteRoutes($strava->strava_id);
 
+        return view('strava::tracklist')->with('api', $api);
+    }
+
+    public function trackAdd($id)
+    {
+        if(!Auth::check()){
+            return redirect('/login/form');
+        }
+        if(!$strava = Auth::user()->strava){
+            return 'Требуется автоизация в Strava';
+        }
+        $strava_token = $strava->access_token;
+        StravaApiClient::setToken($strava_token);
+        $route = null;
+        foreach (StravaApiClient::getAthleteRoutes($strava->strava_id) as $rt)
+        {
+            if($rt->id == $id)
+            {
+                $route = $rt;
+            }
+        }
+        if(is_null($route)){
+            return 'Маршрут не найден';
+        }
+
+        $polyline = $route->map->summary_polyline;
+        $arr_line = Polyline::decodeValue($polyline);
+        $obj = Mapper::map($arr_line[0]['latitude'], $arr_line[0]['longitude'], [
+            'zoom' => 8,
+            'draggable' => true,
+            'marker' => false,
+            'region' => 'RU',
+            'language' => 'ru',
+        ])->polyline($arr_line, ['editable' => 'true', 'strokeColor' => '#000000', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'level' => 3]);
+
+        return view('strava::trackadd', ['obj' => $obj]);
     }
 
     public function test(Request $request)
@@ -71,6 +116,6 @@ class TrackingController extends Controller
             'language' => 'ru',
         ])->polyline($polyline, ['editable' => 'true', 'strokeColor' => '#000000', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'level' => 3]);
 
-        return view('strava::trackadd', ['obj' => $obj]);
+        return view('strava::tracktest', ['obj' => $obj]);
     }
 }
