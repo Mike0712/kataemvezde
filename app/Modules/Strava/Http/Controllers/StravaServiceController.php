@@ -67,7 +67,8 @@ class StravaServiceController extends Controller
         if(Session::has('strava.access_token')){
             $token = Session::get('strava.access_token');
             $id = Session::get('strava.athlete.id');
-            $api = StravaApiClient::getAthletes($token, $id);
+            StravaApiClient::setToken($token);
+            $api = StravaApiClient::getAthlete($id);
 
             $item = Strava::where('strava_id', '=', $id)->first();
             if(!$item)

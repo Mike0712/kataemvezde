@@ -5,6 +5,7 @@ namespace App\Modules\Users\Http\Controllers\Profile;
 use App\Http\Controllers\Controller;
 use Auth;
 use Image;
+use App\Modules\Users\Models\User;
 
 
 class ProfileController extends Controller
@@ -14,7 +15,7 @@ class ProfileController extends Controller
 //        $this->middleware('auth');
     }
 
-    public function members()
+    public function profile()
     {
         if(!Auth::check()){
             return redirect('/login/form');
@@ -22,6 +23,13 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        return view('users::profile.profile', ['user' => $user]);
+        return view('users::profile.profile')->with('user', $user);
+    }
+
+    public function getProfile($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('users::profile.profile')->with('user', $user);
     }
 }

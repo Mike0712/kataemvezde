@@ -252,6 +252,7 @@ return [
         'Polyline' => App\Core\Facades\Polyline::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Resizer' => \App\Core\Facades\Resizer::class,
+        'Date' => \App\Core\Facades\Date::class,
     ],
 
 ];

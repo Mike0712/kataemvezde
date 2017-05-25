@@ -18,7 +18,7 @@ class CreatePersonsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->enum('sex', ['male', 'female']);
-            $table->timestamp('year_birth');
+            $table->date('birthday');
             $table->integer('user_id');
             $table->enum('progress', ['200', '300', '400', '600', '1000+', '5000+']);
             $table->enum('mission', ['free', 'member', 'org', 'bigord', 'director', 'volunteer', 'photographer']);
