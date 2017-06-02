@@ -53,7 +53,7 @@ class TrackingController extends Controller
     {
         echo $id;die;
     }
-
+    // Strava tracks
     public function trackList()
     {
         if(!Auth::check()){
@@ -69,7 +69,7 @@ class TrackingController extends Controller
         return view('strava::tracklist')->with('api', $api);
     }
 
-    public function trackAdd($id)
+    public function trackStrava($id)
     {
         if(!Auth::check()){
             return redirect('/login/form');
@@ -94,14 +94,30 @@ class TrackingController extends Controller
         $polyline = $route->map->summary_polyline;
         $arr_line = Polyline::decodeValue($polyline);
         $obj = Mapper::map($arr_line[0]['latitude'], $arr_line[0]['longitude'], [
-            'zoom' => 8,
             'draggable' => true,
             'marker' => false,
             'region' => 'RU',
             'language' => 'ru',
-        ])->polyline($arr_line, ['editable' => 'true', 'strokeColor' => '#000000', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'level' => 3]);
+            'center' => true,
+            'locate' => false,
+//            'async' => true,
+            'type' => 'ROADMAP',
+        ])->polyline($arr_line, ['editable' => 'true', 'clickable' => 'false','strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5]);
 
         return view('strava::trackadd', ['obj' => $obj]);
+    }
+
+    public function trackAdd(Request $request)
+    {
+        if (csrf_token() == $request::only('_token')['_token']){
+            $json_polyline = $request::only('polyline')['polyline'];
+            $coordinates =  json_decode($json_polyline)->coordinates;
+            foreach ($coordinates as $coordinate){
+                Polyline::addPoint($coordinate[0], $coordinate[1]);
+            }
+            $polyline = Polyline::encodedString();
+            pr($polyline);
+        }
     }
 
     public function test(Request $request)

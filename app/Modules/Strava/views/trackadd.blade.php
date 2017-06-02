@@ -13,6 +13,14 @@
                                 {!! $obj->render() !!}
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            {!! Form::open(['url' => '/tracks/add']) !!}
+                                {{ Form::text('title', null, ['placeholder' => 'Название трека']) }}
+                                {{ Form::text('distance', null, ['placeholder' => 'Дистанция']) }}
+                                {{ Form::hidden('polyline', null, ['id' => 'json_polyline']) }}
+                                {{ Form::submit('Сохранить', ['class' => 'btn btn-danger']) }}
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 </div>
             </div>

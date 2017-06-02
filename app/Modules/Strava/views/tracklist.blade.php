@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <a href="{{ url('/track/add/' . $item->id)}}" class="btn btn-info">Выбрать</a>
+                        <a href="{{ url('/track/strava/' . $item->id)}}" class="btn btn-info">Выбрать</a>
                     </div>
                 </div>
             @endforeach

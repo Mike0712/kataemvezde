@@ -17,7 +17,7 @@ class CreateTracksTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('distance');
-            $table->string('polyline', 1000);
+            $table->text('polyline');
             $table->integer('user_id');
             $table->timestamps();
         });

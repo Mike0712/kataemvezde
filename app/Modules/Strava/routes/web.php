@@ -7,7 +7,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tracks', ['as' => 'tracks', 'uses' => 'TrackingController@tracks']);
     Route::get('/track/{id}', ['as' => 'track', 'uses' => 'TrackingController@track']);
     Route::get('/tracks/list', ['as' => 'tracks.list', 'uses' => 'TrackingController@trackList']);
-    Route::get('/track/add/{id}', ['as' => 'track.add', 'uses' => 'TrackingController@trackAdd']);
+    Route::get('/track/strava/{id}', ['as' => 'track.strava', 'uses' => 'TrackingController@trackStrava']);
+    Route::any('/tracks/add', ['as' => 'track.add', 'uses' => 'TrackingController@trackAdd']);
 
     Route::get('/tracks/test', ['as' => 'track.test', 'uses' => 'TrackingController@test']);
 });
