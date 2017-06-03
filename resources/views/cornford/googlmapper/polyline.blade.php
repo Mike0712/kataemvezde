@@ -46,12 +46,13 @@ polyline_{!! $id !!}.setMap({!! $options['map'] !!});
 
 	// event to create polyline by click
 
-	google.maps.event.addListener(map_{!! $id !!}, 'click', function(event){
-
+	@if($options['addpoint'])
+		google.maps.event.addListener(map_{!! $id !!}, 'click', function(event){
 		var path = polyline_{!! $id !!}.getPath();
 		path.push(event.latLng);
 		insertIntoText();
-	});
+		});
+	@endif
 
 shapes.push({
 	'polyline_{!! $id !!}': polyline_{!! $id !!}

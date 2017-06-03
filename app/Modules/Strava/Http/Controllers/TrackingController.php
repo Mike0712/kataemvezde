@@ -3,6 +3,7 @@
 namespace App\Modules\Strava\Http\Controllers;
 
 use App\Core\Facades\StravaApi;
+use App\Modules\Strava\Models\Track;
 use Polyline;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -46,12 +47,27 @@ class TrackingController extends Controller
 
     public function tracks()
     {
-        echo 123;die;
+        $tracks = Track::all();
+        if(!Auth::check()){
+            $user_tracks = false;
+        }else{
+            $user_tracks = Track::where('user_id', '=', Auth::user()->id)->get();
+        }
+
+        return view('strava::tracks')->with('tracks', ['all' => $tracks, 'user' =>  $user_tracks]);
     }
 
     public function track($id)
     {
-        echo $id;die;
+        $track = Track::findOrFail($id);
+        $arr_line = Polyline::decodeValue($track->polyline);
+        $obj = Mapper::map($arr_line[0]['latitude'], $arr_line[0]['longitude'], [
+            'marker' => false,
+            'region' => 'RU',
+            'language' => 'ru',
+        ])->polyline($arr_line, ['clickable' => true,'strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'addpoint' => false]);
+
+        return view('strava::trackstrava', ['obj' => $obj]);
     }
     // Strava tracks
     public function trackList()
@@ -102,21 +118,35 @@ class TrackingController extends Controller
             'locate' => false,
 //            'async' => true,
             'type' => 'ROADMAP',
-        ])->polyline($arr_line, ['editable' => 'true', 'clickable' => 'false','strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5]);
+        ])->polyline($arr_line, ['editable' => true, 'clickable' => true,'strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'addpoint' => true]);
 
-        return view('strava::trackadd', ['obj' => $obj]);
+        return view('strava::trackstrava', ['obj' => $obj]);
     }
 
     public function trackAdd(Request $request)
     {
+        if(!Auth::check()){
+            return redirect('/login/form');
+        }else{
+            $user_id = Auth::user()->id;
+        }
         if (csrf_token() == $request::only('_token')['_token']){
-            $json_polyline = $request::only('polyline')['polyline'];
+            $req = $request::only('title', 'polyline', 'distance');
+            $title = $req['title'];
+            $distance = $req['distance'];
+            $json_polyline = $req['polyline'];
             $coordinates =  json_decode($json_polyline)->coordinates;
             foreach ($coordinates as $coordinate){
                 Polyline::addPoint($coordinate[0], $coordinate[1]);
             }
             $polyline = Polyline::encodedString();
-            pr($polyline);
+
+            $track = new Track;
+            $track->title = $title;
+            $track->polyline = $polyline;
+            $track->distance = $distance;
+            $track->user_id = $user_id;
+            $track->save();
         }
     }
 
