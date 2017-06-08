@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Добавление трека</div>
+                    <div class="panel-heading">Нанесение контрольных точек на трек</div>
 
                     <div class="panel-body">
                         <div class="col-md-8">
@@ -14,10 +14,12 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            {!! Form::open(['url' => '/tracks/add']) !!}
-                                {{ Form::text('title', null, ['placeholder' => 'Название трека']) }}
-                                {{ Form::text('distance', null, ['placeholder' => 'Дистанция']) }}
-                                {{ Form::hidden('polyline', null, ['id' => 'json_polyline']) }}
+                            {!! Form::open(['method' => 'get']) !!}
+                                {{ Form::text('name', null, ['placeholder' => 'Название контрольной точки']) }}
+                                {{ Form::text('kilomeeter', null, ['placeholder' => 'Расстояние от старта км']) }}
+                                {{ Form::text('lattitude', null, ['placeholder' => 'Широта', 'id' => 'lattitude', 'readonly']) }}
+                                {{ Form::text('longditude', null, ['placeholder' => 'Долгота', 'id' => 'longditude', 'readonly']) }}
+
                                 {{ Form::submit('Сохранить', ['class' => 'btn btn-danger']) }}
                             {!! Form::close() !!}
                         </div>

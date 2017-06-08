@@ -54,6 +54,19 @@ polyline_{!! $id !!}.setMap({!! $options['map'] !!});
 		});
 	@endif
 
+	@if($options['addmark'])
+		google.maps.event.addListener(polyline_{!! $id !!}, 'click', function(event){
+		var marker = new google.maps.Marker({
+		});
+		marker.setPosition(event.latLng);
+		marker.setMap({!! $options['map'] !!});
+		var lat = marker.getPosition().lat();
+		var lng = marker.getPosition().lng();
+		document.getElementById('lattitude').value = lat;
+		document.getElementById('longditude').value = lng;
+		});
+	@endif
+
 shapes.push({
 	'polyline_{!! $id !!}': polyline_{!! $id !!}
 });

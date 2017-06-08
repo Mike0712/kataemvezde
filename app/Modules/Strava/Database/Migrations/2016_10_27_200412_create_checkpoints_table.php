@@ -19,7 +19,6 @@ class CreateCheckpointsTable extends Migration
             $table->integer('kilomeeter');
             $table->float('lattitude')->nullable();
             $table->float('longditude')->nullable();
-            $table->integer('sort');
             $table->integer('track_id');
             $table->timestamps();
 

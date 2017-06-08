@@ -2,22 +2,14 @@
 
 namespace App\Modules\Strava\Http\Controllers;
 
-use App\Core\Facades\StravaApi;
 use App\Modules\Strava\Models\Track;
 use Polyline;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Modules\Strava\Models\StravaApiClient;
-use Cornford\Googlmapper\Facades\MapperFacade;
-use Illuminate\Http\Response;
-use App\Modules\Strava\Http\Requests\StravaRequest;
 use App\Modules\Strava\Repositories\StravaRepository;
 use App\Modules\Strava\Services\StravaService;
-use ErrorException;
-use League\Flysystem\Exception;
 use Request;
-use Session;
-use App\Modules\Strava\Models\Strava;
 use Auth;
 use Mapper;
 
@@ -38,11 +30,14 @@ class TrackingController extends Controller
      *
      * @param StravaRepository $repo
      * @param StravaService $service
+     * @param Track $model
+     * Базовая модель, для работы с формами
      */
-    public function __construct(StravaRepository $repo, StravaService $service)
+    public function __construct(StravaRepository $repo, StravaService $service, Track $track)
     {
         $this->repo = $repo;
         $this->service = $service;
+        $this->model = $track;
     }
 
     public function tracks()
@@ -57,17 +52,27 @@ class TrackingController extends Controller
         return view('strava::tracks')->with('tracks', ['all' => $tracks, 'user' =>  $user_tracks]);
     }
 
-    public function track($id)
+    public function track($id, Request $request)
     {
         $track = Track::findOrFail($id);
+        if (csrf_token() == $request::only('_token')['_token']){
+         /*   $req = $request::only('name', 'polyline', 'distance');
+
+            $track = new Track;
+            $track->title = $title;
+            $track->polyline = $polyline;
+            $track->distance = $distance;
+            $track->user_id = $user_id;
+            $track->save();*/
+        }
         $arr_line = Polyline::decodeValue($track->polyline);
         $obj = Mapper::map($arr_line[0]['latitude'], $arr_line[0]['longitude'], [
             'marker' => false,
             'region' => 'RU',
             'language' => 'ru',
-        ])->polyline($arr_line, ['clickable' => true,'strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'addpoint' => false]);
+        ])->polyline($arr_line, ['clickable' => true,'strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'addpoint' => false, 'addmark' => true]);
 
-        return view('strava::trackstrava', ['obj' => $obj]);
+        return view('strava::track', ['obj' => $obj, 'id' => $id]);
     }
     // Strava tracks
     public function trackList()
@@ -116,9 +121,7 @@ class TrackingController extends Controller
             'language' => 'ru',
             'center' => true,
             'locate' => false,
-//            'async' => true,
-            'type' => 'ROADMAP',
-        ])->polyline($arr_line, ['editable' => true, 'clickable' => true,'strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'addpoint' => true]);
+        ])->polyline($arr_line, ['editable' => true, 'clickable' => true,'strokeColor' => 'red', 'strokeOpacity' => 0.6, 'strokeWeight' => 5, 'addpoint' => true, 'addmark' => false]);
 
         return view('strava::trackstrava', ['obj' => $obj]);
     }
@@ -132,6 +135,7 @@ class TrackingController extends Controller
         }
         if (csrf_token() == $request::only('_token')['_token']){
             $req = $request::only('title', 'polyline', 'distance');
+            $this->validateWith($this->model->validate($req));
             $title = $req['title'];
             $distance = $req['distance'];
             $json_polyline = $req['polyline'];

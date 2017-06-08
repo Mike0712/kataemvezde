@@ -14,9 +14,17 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            {!! Form::open(['url' => '/tracks/add']) !!}
-                                {{ Form::text('title', null, ['placeholder' => 'Название трека']) }}
-                                {{ Form::text('distance', null, ['placeholder' => 'Дистанция']) }}
+                            {!! Form::open(['route' => 'tracks.add']) !!}
+                            <div class="form-group">
+                                {{ Form::label('title', 'Название трека', ['class' => 'control-label']) }}
+                                <br>
+                                {{ Form::text('title', null, []) }}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('distance', 'Дистанция', ['class' => 'control-label']) }}
+                                <br>
+                                {{ Form::text('distance', null, []) }}
+                            </div>
                                 {{ Form::hidden('polyline', null, ['id' => 'json_polyline']) }}
                                 {{ Form::submit('Сохранить', ['class' => 'btn btn-danger']) }}
                             {!! Form::close() !!}
