@@ -5,18 +5,14 @@
 @endsection
 
 @section('content')
-    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-        {{ csrf_field() }}
+    {{ Form::open(['url' => route('register.post'), 'class' => 'form-horizontal']) }}
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
             <label for="name" class="col-md-4 control-label">Имя</label>
 
             <div class="col-md-6">
-
-                <input id="name" type="text" class="form-control" name="name" value="{{ $old_input['name'] }}" required
-                       autofocus>
-
+                {{ Form::text('name', $old_input['name'], ['id' => 'name', 'class' => 'form-control', 'required', 'autofocus']) }}
                 @if ($errors->has('name'))
                     <span class="help-block">
                         <strong>{{ $errors->first('name') }}</strong>
@@ -30,12 +26,12 @@
             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
             <div class="col-md-6">
-                <input id="email" type="email" class="form-control" name="email" value="{{ $old_input['email'] }}" required>
+                {{ Form::email('email', $old_input['email'], ['id' => 'email', 'class' => 'form-control', 'required']) }}
 
                 @if ($errors->has('email'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -44,7 +40,7 @@
             <label for="password" class="col-md-4 control-label">Пароль</label>
 
             <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password" required>
+                {{ Form::password('password', ['id' => 'password', 'class' => 'form-control', 'required']) }}
 
                 @if ($errors->has('password'))
                     <span class="help-block">
@@ -58,7 +54,7 @@
             <label for="password-confirm" class="col-md-4 control-label">Повторить пароль</label>
 
             <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                {{ Form::password('password_confirmation', ['id' => 'password-confirm','class' => 'form-control', 'required']) }}
             </div>
         </div>
 
@@ -69,6 +65,6 @@
                 </button>
             </div>
         </div>
-    </form>
+    {{ Form::close() }}
 
 @endsection

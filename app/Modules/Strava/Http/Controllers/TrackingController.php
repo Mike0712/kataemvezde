@@ -52,18 +52,17 @@ class TrackingController extends Controller
         return view('strava::tracks')->with('tracks', ['all' => $tracks, 'user' =>  $user_tracks]);
     }
 
-    public function track($id, Request $request)
+    public function track(Request $request, $id)
     {
         $track = Track::findOrFail($id);
         if (csrf_token() == $request::only('_token')['_token']){
-         /*   $req = $request::only('name', 'polyline', 'distance');
-
+            $req = $request::only('name', 'polyline', 'distance');
             $track = new Track;
             $track->title = $title;
             $track->polyline = $polyline;
             $track->distance = $distance;
             $track->user_id = $user_id;
-            $track->save();*/
+            $track->save();
         }
         $arr_line = Polyline::decodeValue($track->polyline);
         $obj = Mapper::map($arr_line[0]['latitude'], $arr_line[0]['longitude'], [

@@ -158,6 +158,7 @@ return [
         'Main' => ['active' => true, 'routes' => true,],
         'Users' => ['active' => true, 'routes' => true,],
         'Strava' => ['active' => true, 'routes' => true,],
+        'Competitions' => ['active' => true, 'routes' => true,],
         // end of modules (don't remove this comment)
     ],
 

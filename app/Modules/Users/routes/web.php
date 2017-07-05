@@ -10,7 +10,7 @@ Route::group(['namespace' => 'Auth', 'middleware' => 'web',], function (){
     Route::post('/login', ['as' => 'login.submit','uses' => 'AuthController@authenticate']);
     Route::post('/logout', ['as' => 'logout','uses' => 'AuthController@logout']);
     Route::get('/register/form', ['as' => 'register', 'uses' => 'AuthController@register']);
-    Route::post('/register', ['as' => 'register_post', 'uses' => 'RegisterController@register']);
+    Route::post('/register', ['as' => 'register.post', 'uses' => 'RegisterController@register']);
     Route::post('password/email', ['as' => 'password.email', 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
     Route::get('password/reset', ['as' => 'password.request', 'uses' => 'AuthController@showLinkRequestForm']);
     Route::post('password/reset', ['uses' => 'ResetPasswordController@reset']);

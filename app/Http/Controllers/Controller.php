@@ -17,7 +17,7 @@ class Controller extends BaseController
     /*
      * Медод для обработки формы добавления записи
      */
-    public function create(Request $request)
+    /*public function create(Request $request)
     {
         if (csrf_token() == $request::only('_token')['_token']){
             $model = $this->model;
@@ -28,5 +28,5 @@ class Controller extends BaseController
             $model->fill($data);
             $model->save();
         }
-    }
+    }*/
 }
