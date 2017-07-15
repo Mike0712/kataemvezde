@@ -11,22 +11,4 @@ use Request;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    protected $model;
-
-    /*
-     * Медод для обработки формы добавления записи
-     */
-    /*public function create(Request $request)
-    {
-        if (csrf_token() == $request::only('_token')['_token']){
-            $model = $this->model;
-            $fields = $model->getFillable();
-            $data = $request::only($fields);
-            $this->validateWith($model->validate($data));
-
-            $model->fill($data);
-            $model->save();
-        }
-    }*/
 }

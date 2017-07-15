@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Modules\Main\Http\Controllers;
+namespace App\Modules\Main\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Main\Models\Club;
-use App\Core\Facades\StravaApi;
 use App\Core\Facades\StravaOAuth;
 
 

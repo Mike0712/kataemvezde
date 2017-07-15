@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Users\Http\Controllers\Auth;
+namespace App\Modules\Users\Controllers\Auth;
 
 use App\Modules\Users\Models\User;
 use Validator;

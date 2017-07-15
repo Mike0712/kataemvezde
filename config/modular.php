@@ -91,7 +91,7 @@ return [
          * automatically added to all controllers defined inside above routing
          * file)
          */
-        'route_group_namespace' => 'Http\\Controllers',
+        'route_group_namespace' => 'Controllers',
     ],
 
     /*
@@ -171,44 +171,35 @@ return [
         'default' => [
             'directories' => [
                 'Models',
-                'Repositories',
                 'Services',
                 'Exceptions',
-                'Http/Controllers',
-                'Http/Requests',
+                'Controllers',
                 'Database/Migrations',
                 'Database/Seeds',
-                'Database/Factories',
+                'views',
             ],
             'files' => [
                 'Models/.gitkeep' => '.gitkeep.stub',
-                'Repositories/.gitkeep' => '.gitkeep.stub',
                 'Services/.gitkeep' => '.gitkeep.stub',
                 'Exceptions/.gitkeep' => '.gitkeep.stub',
-                'Http/Controllers/.gitkeep' => '.gitkeep.stub',
-                'Http/Requests/.gitkeep' => '.gitkeep.stub',
+                'Controllers/.gitkeep' => '.gitkeep.stub',
                 'Database/Migrations/.gitkeep' => '.gitkeep.stub',
                 'Database/Seeds/.gitkeep' => '.gitkeep.stub',
-                'Database/Factories/.gitkeep' => '.gitkeep.stub',
-                'Http/Controllers/{class}Controller.php' => 'Controller.php.stub',
-                'Http/Requests/{class}Request.php' => 'Request.php.stub',
+                'Controllers/{class}Controller.php' => 'Controller.php.stub',
                 'Models/{class}.php' => 'Model.php.stub',
                 'routes/web.php' => 'routes_web.php.stub',
                 'routes/api.php' => 'routes_api.php.stub',
                 'Database/Seeds/{class}DatabaseSeeder.php' => 'DatabaseSeeder.php.stub',
-                'Database/Factories/{class}ModelFactory.php' => 'ModelFactory.php.stub',
-                'Repositories/{class}Repository.php' => 'Repository.php.stub',
-                'Services/{class}Service.php' => 'Service.php.stub',
+                'views/.gitkeep' => '.gitkeep.stub',
+                'views/default.blade.php' => 'blade.php.stub',
             ],
         ],
         'submodule' => [
             'stub_directory' => 'default',
             'files' => [
-                'Http/Controllers/{class}Controller.php' => 'Controller.php.stub',
+                'Controllers/{class}Controller.php' => 'Controller.php.stub',
                 'Models/{class}.php' => 'Model.php.stub',
                 'Database/Seeds/{class}DatabaseSeeder.php' => 'DatabaseSeeder.php.stub',
-                'Repositories/{class}Repository.php' => 'Repository.php.stub',
-                'Services/{class}Service.php' => 'Service.php.stub',
             ],
         ],
         'model' => [
@@ -220,10 +211,10 @@ return [
         'controller' => [
             'stub_directory' => 'default',
             'files' => [
-                'Http/Controllers/{class}Controller.php' => 'Controller.php.stub',
+                'Controllers/{class}Controller.php' => 'Controller.php.stub',
             ],
         ],
-        'repository' => [
+/*        'repository' => [
             'stub_directory' => 'default',
             'files' => [
                 'Repositories/{class}Repository.php' => 'Repository.php.stub',
@@ -246,11 +237,17 @@ return [
             'files' => [
                 'Providers/{class}ServiceProvider.php' => 'ServiceProvider.php.stub',
             ],
-        ],
+        ],*/
         'exception' => [
             'stub_directory' => 'default',
             'files' => [
                 'Exceptions/{class}Exception.php' => 'Exception.php.stub',
+            ],
+        ],
+        'views' => [
+            'stub_directory' => 'default',
+            'files' => [
+                'views/{plural|lower}.blade.php' => 'blade.php.stub',
             ],
         ],
     ],

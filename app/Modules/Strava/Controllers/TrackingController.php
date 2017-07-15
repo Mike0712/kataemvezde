@@ -1,45 +1,17 @@
 <?php
 
-namespace App\Modules\Strava\Http\Controllers;
+namespace App\Modules\Strava\Controllers;
 
 use App\Modules\Strava\Models\Track;
 use Polyline;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Modules\Strava\Models\StravaApiClient;
-use App\Modules\Strava\Repositories\StravaRepository;
-use App\Modules\Strava\Services\StravaService;
 use Request;
 use Auth;
 use Mapper;
 
 class TrackingController extends Controller
 {
-    /**
-     * @var StravaRepository
-     */
-    protected $repo;
-
-    /**
-     * @var StravaService
-     */
-    protected $service;
-
-    /**
-     * StravaController constructor.
-     *
-     * @param StravaRepository $repo
-     * @param StravaService $service
-     * @param Track $model
-     * Базовая модель, для работы с формами
-     */
-    public function __construct(StravaRepository $repo, StravaService $service, Track $track)
-    {
-        $this->repo = $repo;
-        $this->service = $service;
-        $this->model = $track;
-    }
-
     public function tracks()
     {
         $tracks = Track::all();
