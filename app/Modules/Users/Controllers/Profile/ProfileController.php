@@ -4,7 +4,6 @@ namespace App\Modules\Users\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use Image;
 use App\Modules\Users\Models\User;
 
 
@@ -19,6 +18,10 @@ class ProfileController extends Controller
     {
         if(!Auth::check()){
             return redirect('/login/form');
+        }
+
+        if(request()){
+
         }
 
         $user = Auth::user();

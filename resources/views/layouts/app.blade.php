@@ -11,9 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    {{--<link href="{{ uncache('css/app.css') }}" rel="stylesheet">--}}
-    {{--<link href="{{ uncache('css/bootstrap.min.css') }}" rel="stylesheet">--}}
-    <link href="{{ uncache('css_js/styles.css') }}" rel="stylesheet">
+
+    <link href="{{ uncache('assets/vendor/vendor.min.css') }}" rel="stylesheet">
+    <link href="{{ uncache('assets/css_js/styles.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -21,7 +21,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ uncache('assets/vendor/vendor.min.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -145,8 +145,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset(uncache('js/app.js')) }}"></script>
-<script src="{{ asset(uncache('js/modal.js')) }}"></script>
+<script src="{{ uncache('assets/css_js/js.min.js') }}"></script>
 
 </body>
 </html>

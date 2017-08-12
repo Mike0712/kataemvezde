@@ -1,29 +1,24 @@
 @extends('layouts.app')
 
-@php
-    $name = explode(' ', $user->name);
-    $first_name = $name[0];
-    $last_name = $name[1] ?? 'неизвестно';
-@endphp
-
 @section('content')
     <div class="container">
         <div class="col-lg-7">
             <h3>Карточка участника<br> {{ $user->name }}</h3>
             <img style="border: 2px solid #ddd; padding: 5px;" src="{{ Resizer::image('/images/users/empty_avatar.jpg')->make(160) }}" alt="" class="img_inner fleft">
             <div class="extra_wrapper">
+                {{ Form::open() }}
                 {{--Имя--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Имя</div>
                     <div class="profile-value">
-                        <strong>{{ $user->person->first_name ?? $first_name }}</strong>
+                        <strong>{{ $user->person->first_name ?? 'не указано' }}</strong>
                     </div>
                 </div>
                 {{--Фамилия--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Фамилия</div>
                     <div class="profile-value">
-                        <strong>{{ $user->person->last_name ?? $last_name }}</strong>
+                        <strong>{{ $user->person->last_name ?? 'не указано'}}</strong>
                     </div>
                 </div>
                 {{--пол--}}
@@ -44,6 +39,7 @@
                     </div>
                 </div>
             </div>
+            {{ Form::close() }}
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-4">

@@ -70,7 +70,7 @@ class UsersTableSeeder extends Seeder
 
         User::create([
             'name' => 'MikhailChurikov',
-            'email' => 'barrister2003@gmail.ru',
+            'email' => 'barrister2003@gmail.com',
             'password' =>'$2y$10$O25adCIHCa0XuRrzMTO1duohc7Uy58poAvoiEKu5F5KQ6VPf7hiNu',
         ]);
 
