@@ -1,17 +1,19 @@
 <?php
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/strava_oauth',['as' => 'strava.oauth', 'uses' => 'StravaServiceController@oAuth']);
-    Route::get('/user_fix',['as' => 'strava.user_fix', 'uses' => 'StravaServiceController@stravaUserFix']);
-    Route::get('/strava/add', ['as' => 'strava.add', 'uses' => 'StravaServiceController@add']);
-    // tracks
-    Route::get('/tracks', ['as' => 'tracks', 'uses' => 'TrackingController@tracks']);
-    Route::get('/track/{id}', ['as' => 'track', 'uses' => 'TrackingController@track']);
-    Route::get('/tracks/list', ['as' => 'tracks.list', 'uses' => 'TrackingController@trackList']);
-    Route::get('/track/strava/{id}', ['as' => 'track.strava', 'uses' => 'TrackingController@trackStrava']);
+    Route::get('/strava_oauth', 'StravaController@oAuth')->name('strava.oauth');
+    Route::get('/user_fix', 'StravaController@stravaUserFix')->name('strava.user_fix');
+    Route::get('/strava/add', 'StravaController@add')->name('strava.add');
 
-    Route::any('/tracks/add', ['as' => 'tracks.add', 'uses' => 'TrackingController@trackAdd']);
-    Route::any('/tracks/create', ['as' => 'tracks.create', 'uses' => 'TrackingController@create']);
+    Route::get('/tracks/{id}', 'TracksController@track')->name('track');
 
-    Route::get('/tracks/test', ['as' => 'track.test', 'uses' => 'TrackingController@test']);
+    Route::get('/tracks/list', 'TracksController@trackList')->name('tracks.list');
+    Route::get('/track/strava/{id}', 'TracksController@trackStrava')->name('track.strava');
+
+    Route::get('/tracks', 'TracksController@tracks')->name('tracks');
+    Route::any('/tracks/add', 'TracksController@trackAdd')->name('tracks.add');
+    Route::any('/tracks/edit/{id}', 'TracksController@trackAdd')->name('tracks.edit');
+    Route::any('/tracks/delete/{id}', 'TracksController@trackAdd')->name('tracks.delete');
+
+    Route::get('/tracks/test', 'TracksController@test')->name('track.test');
 });

@@ -2,6 +2,8 @@
 
 namespace App\Modules\Users\Models;
 
+use App\Modules\Main\Models\Result;
+use App\Modules\Strava\Models\Strava;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -33,16 +35,16 @@ class User extends Authenticatable
      */
     public function person()
     {
-        return $this->hasOne('App\Modules\Users\Models\Person', 'user_id');
+        return $this->hasOne(Person::class, 'user_id');
     }
 
     public function result()
     {
-        return $this->hasMany('App\Modules\Main\Models\Result', 'user_id');
+        return $this->hasMany(Result::class, 'user_id');
     }
 
     public function strava()
     {
-        return $this->hasOne('App\Modules\Strava\Models\Strava', 'user_id');
+        return $this->hasOne(Strava::class, 'user_id');
     }
 }

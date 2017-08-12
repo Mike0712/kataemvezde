@@ -3,14 +3,14 @@
 namespace App\Modules\Strava\Controllers;
 
 use App\Modules\Strava\Models\Track;
-use Polyline;
+use App\Core\Facades\Polyline;
 use App\Http\Controllers\Controller;
 use App\Modules\Strava\Models\StravaApiClient;
 use Request;
 use Auth;
 use Mapper;
 
-class TrackingController extends Controller
+class TracksController extends Controller
 {
     public function tracks()
     {
@@ -55,6 +55,7 @@ class TrackingController extends Controller
             return 'Требуется автоизация в Strava';
         }
         $strava_token = $strava->access_token;
+
         StravaApiClient::setToken($strava_token);
         $api = StravaApiClient::getAthleteRoutes($strava->strava_id);
 

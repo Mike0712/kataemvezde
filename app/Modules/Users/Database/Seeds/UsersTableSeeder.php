@@ -73,5 +73,11 @@ class UsersTableSeeder extends Seeder
             'email' => 'barrister2003@gmail.ru',
             'password' =>'$2y$10$O25adCIHCa0XuRrzMTO1duohc7Uy58poAvoiEKu5F5KQ6VPf7hiNu',
         ]);
+
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@test.ru',
+            'password' =>'$2y$10$O25adCIHCa0XuRrzMTO1duohc7Uy58poAvoiEKu5F5KQ6VPf7hiNu',
+        ]);
     }
 }
