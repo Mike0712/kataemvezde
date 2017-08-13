@@ -20,8 +20,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1964-01-01',
             'user_id' => 1,
-            'progress' => '1000+',
-            'mission' => 'director',
         ]);
 
         Person::create([
@@ -30,8 +28,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1958-01-01',
             'user_id' => 2,
-            'progress' => '1000+',
-            'mission' => 'member',
         ]);
 
         Person::create([
@@ -40,8 +36,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1976-01-01',
             'user_id' => 3,
-            'progress' => '1000+',
-            'mission' => 'org',
         ]);
 
         Person::create([
@@ -50,8 +44,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1989-01-01',
             'user_id' => 4,
-            'progress' => '1000+',
-            'mission' => 'member',
         ]);
 
         Person::create([
@@ -60,8 +52,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'female',
             'birthday' => '1960-01-01',
             'user_id' => 5,
-            'progress' => '1000+',
-            'mission' => 'org',
         ]);
 
         Person::create([
@@ -70,8 +60,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1980-01-01',
             'user_id' => 6,
-            'progress' => '1000+',
-            'mission' => 'bigord',
         ]);
 
         Person::create([
@@ -80,8 +68,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1980-01-01',
             'user_id' => 7,
-            'progress' => '1000+',
-            'mission' => 'member',
         ]);
 
         Person::create([
@@ -90,8 +76,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1983-01-01',
             'user_id' => 8,
-            'progress' => '1000+',
-            'mission' => 'member',
         ]);
 
         Person::create([
@@ -100,8 +84,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1984-01-01',
             'user_id' => 9,
-            'progress' => '1000+',
-            'mission' => 'org',
         ]);
 
         Person::create([
@@ -110,8 +92,6 @@ class PersonsTableSeeder extends Seeder
             'sex' => 'male',
             'birthday' => '1982-01-01',
             'user_id' => 10,
-            'progress' => '1000+',
-            'mission' => 'org',
         ]);
     }
 }

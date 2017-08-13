@@ -15,12 +15,13 @@ class CreateCheckpointsTable extends Migration
     {
         Schema::create('checkpoints', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('kilomeeter');
-            $table->float('lattitude')->nullable();
-            $table->float('longditude')->nullable();
-            $table->integer('track_id');
+            $table->string('name')->default('');
+            $table->integer('kilomeeter')->default(0);
+            $table->float('lattitude')->default(0);
+            $table->float('longditude')->default(0);
+            $table->integer('track_id')->default(0)->index();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('track_id')
                 ->references('id')->on('tracks')

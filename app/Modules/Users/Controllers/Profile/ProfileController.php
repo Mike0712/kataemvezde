@@ -3,6 +3,7 @@
 namespace App\Modules\Users\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Users\Models\Person;
 use Auth;
 use App\Modules\Users\Models\User;
 
@@ -20,11 +21,22 @@ class ProfileController extends Controller
             return redirect('/login/form');
         }
 
-        if(request()){
-
-        }
-
         $user = Auth::user();
+
+        if(request()->ajax()){
+            if(request('get_field')){
+                return view('users::profile._field', ['name' => request('name'), 'person' => $user->person]);
+            }
+            $params = request(['first_name', 'last_name', 'sex', 'birthday']);
+            foreach ($params as $key => $param){
+                if($param){
+                    $person = new Person;
+                    $person->$key = $param;
+                    $user->person()->save($person);
+                }
+            }
+            die;
+        }
 
         return view('users::profile.profile')->with('user', $user);
     }

@@ -5,26 +5,26 @@
         <div class="col-lg-7">
             <h3>Карточка участника<br> {{ $user->name }}</h3>
             <img style="border: 2px solid #ddd; padding: 5px;" src="{{ Resizer::image('/images/users/empty_avatar.jpg')->make(160) }}" alt="" class="img_inner fleft">
+            {{ Form::model($user->person, ['id' => 'form-profile']) }}
             <div class="extra_wrapper">
-                {{ Form::open() }}
                 {{--Имя--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Имя</div>
-                    <div class="profile-value">
+                    <div class="profile-value" data-name="first_name">
                         <strong>{{ $user->person->first_name ?? 'не указано' }}</strong>
                     </div>
                 </div>
                 {{--Фамилия--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Фамилия</div>
-                    <div class="profile-value">
+                    <div class="profile-value" data-name="last_name">
                         <strong>{{ $user->person->last_name ?? 'не указано'}}</strong>
                     </div>
                 </div>
                 {{--пол--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Пол</div>
-                    <div class="profile-value">
+                    <div class="profile-value" data-name="sex">
                         <strong>{{ $user->person->sex ?? 'не указан' }}</strong>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 {{--Год рождения--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Год рождения</div>
-                    <div class="profile-value">
+                    <div class="profile-value" data-name="birthday">
                         <strong>{{ isset($user->person->birthday) ? Date::parse($user->person->birthday)->format('Y') : 'не указано' }}</strong>
                     </div>
                 </div>

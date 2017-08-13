@@ -4,13 +4,13 @@ namespace App\Modules\Users\Models;
 
 use App\Models\AppModel as Model;
 use App\Modules\Main\Models\Club;
-use Eloquent\Dialect\Json;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Person extends Model
 {
+    use SoftDeletes;
 
     protected $table = 'persons';
-
 
     public function club()
     {

@@ -9,7 +9,7 @@
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-            <label for="name" class="col-md-4 control-label">Имя</label>
+            <label for="name" class="col-md-4 control-label">Ник</label>
 
             <div class="col-md-6">
                 {{ Form::text('name', $old_input['name'], ['id' => 'name', 'class' => 'form-control', 'required', 'autofocus']) }}

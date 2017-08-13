@@ -4,11 +4,14 @@ namespace App\Modules\Users\Models;
 
 use App\Modules\Main\Models\Result;
 use App\Modules\Strava\Models\Strava;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
+
     use Notifiable;
 
     /**

@@ -15,11 +15,12 @@ class CreateTracksTable extends Migration
     {
         Schema::create('tracks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->integer('distance');
-            $table->text('polyline');
-            $table->integer('user_id');
+            $table->string('title')->default('');
+            $table->integer('distance')->default(0);
+            $table->text('polyline')->default('');
+            $table->integer('user_id')->default(0)->index();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
