@@ -30,9 +30,13 @@ class ProfileController extends Controller
             $params = request(['first_name', 'last_name', 'sex', 'birthday']);
             foreach ($params as $key => $param){
                 if($param){
-                    $person = new Person;
-                    $person->$key = $param;
-                    $user->person()->save($person);
+                    if($user->person){
+                        $user->person->$key = $param;
+                        $user->person->save();
+                    }else{
+                        $person = new Person([$key => $param]);
+                        $user->person()->save($person);
+                    }
                 }
             }
             die;

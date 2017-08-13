@@ -17,7 +17,7 @@ class CreatePersonsTable extends Migration
             $table->increments('id');
             $table->string('first_name')->default('');
             $table->string('last_name')->default('');
-            $table->enum('sex', ['male', 'female'])->default('');
+            $table->enum('sex', ['male', 'female'])->nullable();
             $table->date('birthday')->nullable();
             $table->integer('user_id')->default(0)->index();
             $table->timestamps();

@@ -12,6 +12,8 @@ class Person extends Model
 
     protected $table = 'persons';
 
+    protected $fillable = ['first_name', 'last_name', 'sex', 'birthday'];
+
     public function club()
     {
         return $this->belongsToMany(Club::class,'person_club', 'person_id', 'club_id');
