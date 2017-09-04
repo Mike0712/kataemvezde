@@ -21,7 +21,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script type="text/javascript" src="{{ uncache('assets/vendor/vendor.min.js') }}"></script>
+
 </head>
 <body>
 <div id="app">
@@ -145,6 +145,7 @@
 </div>
 
 <!-- Scripts -->
+<script type="text/javascript" src="{{ uncache('assets/vendor/vendor.min.js') }}"></script>
 <script src="{{ uncache('assets/css_js/js.min.js') }}"></script>
 
 </body>

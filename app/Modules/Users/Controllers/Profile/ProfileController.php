@@ -4,6 +4,7 @@ namespace App\Modules\Users\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Users\Models\Person;
+use App\Modules\Users\Services\PersonsService;
 use Auth;
 use App\Modules\Users\Models\User;
 
@@ -15,7 +16,7 @@ class ProfileController extends Controller
 //        $this->middleware('auth');
     }
 
-    public function profile()
+    public function profile(PersonsService $personsService)
     {
         if(!Auth::check()){
             return redirect('/login/form');
@@ -28,17 +29,8 @@ class ProfileController extends Controller
                 return view('users::profile._field', ['name' => request('name'), 'person' => $user->person]);
             }
             $params = request(['first_name', 'last_name', 'sex', 'birthday']);
-            foreach ($params as $key => $param){
-                if($param){
-                    if($user->person){
-                        $user->person->$key = $param;
-                        $user->person->save();
-                    }else{
-                        $person = new Person([$key => $param]);
-                        $user->person()->save($person);
-                    }
-                }
-            }
+
+            $personsService->createOrUpdatePerson($params, $user);
             die;
         }
 

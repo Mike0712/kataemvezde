@@ -37,4 +37,13 @@ $(document).ready(function () {
 
         });
     });
+
+    $('.birtday_flatpickr').flatpickr({
+        enableTime: true,
+        dateFormat: 'Y-m-d',
+        time_24hr: true,
+        locale: 'ru',
+        wrap: true,
+        allowInput: true
+    });
 });

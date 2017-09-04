@@ -34,7 +34,8 @@
                 {{--Год рождения--}}
                 <div class="form-group">
                     <div class="col-md-12 profile-label">Год рождения</div>
-                    <div class="profile-value" data-name="birthday">
+
+                    <div class="profile-value birthday_flatpickr" data-name="birthday">
                         <strong>{{ isset($user->person->birthday) ? Date::parse($user->person->birthday)->format('Y') : 'не указано' }}</strong>
                     </div>
                 </div>
